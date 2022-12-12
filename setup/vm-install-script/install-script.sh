@@ -56,6 +56,7 @@ sleep 60
 
 echo "untaint controlplane node"
 kubectl taint node $(kubectl get nodes -o=jsonpath='{.items[].metadata.name}') node.kubernetes.io/not-ready:NoSchedule-
+kubectl taint nodes --all node-role.kubernetes.io/master-
 kubectl get node -o wide
 
 
